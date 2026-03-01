@@ -31,10 +31,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. User stays signed in after closing and reopening the browser tab
   4. User's profile page shows stats summary (initially zeroed), follower count, and following count
   5. Firestore security rules deny all unauthenticated reads/writes and prevent a user from writing another user's document or session
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-(To be filled by plan-phase)
+- [ ] 01-01-PLAN.md — Scaffold Vite+React+TS project, install Firebase SDK, define UserProfile type and Firebase singleton
+- [ ] 01-02-PLAN.md — Firebase auth layer: Google sign-in (popup), user doc creation with timezone capture, AuthContext, ProtectedRoute, LoginPage
+- [ ] 01-03-PLAN.md — Firestore security rules, ProfilePage (stats + social counts), end-to-end human verification
 
 ### Phase 2: Timer and Sessions
 **Goal**: Users can track a focused study session from start to finish and have it permanently recorded with accurate duration
@@ -114,7 +116,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/3 | Not started | - |
 | 2. Timer and Sessions | 0/TBD | Not started | - |
 | 3. Stats and Goals | 0/TBD | Not started | - |
 | 4. Social Graph | 0/TBD | Not started | - |
