@@ -116,6 +116,8 @@
 | PROF-01 | Phase 1 | Pending |
 | PROF-02 | Phase 1 | Pending |
 | PROF-03 | Phase 1 | Pending |
+| PRIV-03 | Phase 1 | Pending |
+| PRIV-04 | Phase 1 | Pending |
 | TIMR-01 | Phase 2 | Pending |
 | TIMR-02 | Phase 2 | Pending |
 | TIMR-03 | Phase 2 | Pending |
@@ -143,19 +145,17 @@
 | FEED-03 | Phase 5 | Pending |
 | FEED-04 | Phase 5 | Pending |
 | FEED-05 | Phase 5 | Pending |
+| PRIV-01 | Phase 5 | Pending |
+| PRIV-02 | Phase 5 | Pending |
 | PRES-01 | Phase 6 | Pending |
 | PRES-02 | Phase 6 | Pending |
 | PRES-03 | Phase 6 | Pending |
-| PRIV-01 | Phase 5 | Pending |
-| PRIV-02 | Phase 5 | Pending |
-| PRIV-03 | Phase 1 | Pending |
-| PRIV-04 | Phase 1 | Pending |
 
 **Coverage:**
-- v1 requirements: 38 total
-- Mapped to phases: 38
-- Unmapped: 0 ✓
+- v1 requirements: 40 total
+- Mapped to phases: 40
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-01*
-*Last updated: 2026-03-01 after initial definition*
+*Last updated: 2026-03-01 after roadmap creation — traceability grouped by phase, coverage count corrected to 40*
