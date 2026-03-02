@@ -11,19 +11,25 @@ service cloud.firestore {
     // Users collection:
     // - Any authenticated user can read any profile (needed for Phase 4 follow lists, Phase 5 feed)
     // - A user can only WRITE their own document (PRIV-04)
-    // - This prevents user A from writing user B's document
     match /users/{userId} {
       allow read: if request.auth != null;
       allow write: if request.auth != null && request.auth.uid == userId;
     }
 
-    // Sessions collection (Phase 2 will add data; rules scaffold here for PRIV-03):
-    // - Authenticated users can read public sessions (Phase 5 will add privacy enforcement)
-    // - A user can only create/update/delete their own sessions (PRIV-03)
-    match /sessions/{sessionId} {
+    // Sessions subcollection (users/{uid}/sessions/{sessionId}):
+    // - Authenticated users can read any session (Phase 5 will add privacy enforcement)
+    // - A user can only create sessions where userId matches their auth uid (PRIV-03)
+    // - A user can only update/delete their own sessions
+    match /users/{userId}/sessions/{sessionId} {
       allow read: if request.auth != null;
       allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
       allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+
+    // Subjects subcollection (users/{uid}/subjects/{subjectId}):
+    // - Owner-only read and write (personal subject list)
+    match /users/{userId}/subjects/{subjectId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
     }
   }
 }
