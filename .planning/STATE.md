@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: in_progress
-last_updated: "2026-03-02T20:23:42Z"
+status: unknown
+last_updated: "2026-03-02T20:26:32.328Z"
 progress:
-  total_phases: 6
+  total_phases: 3
   completed_phases: 2
   total_plans: 11
   completed_plans: 9
@@ -54,6 +54,7 @@ Progress: [████████░░] 45%
 | Phase 03-stats-and-goals P01 | 5 | 3 tasks | 7 files |
 | Phase 03-stats-and-goals P02 | ? | 2 tasks | 1 file |
 | Phase 03-stats-and-goals P03 | 2 | 2 tasks | 2 files |
+| Phase 03-stats-and-goals P02 | 3 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -89,6 +90,9 @@ Recent decisions affecting current work:
 - [Phase 03-01]: react-calendar-heatmap locked with --legacy-peer-deps for React 19 compat — no substitution per CONTEXT.md
 - [Phase 03-01]: Goal fields optional on UserProfile — not set by createOrUpdateUserDoc, use ?? fallback downstream
 - [Phase 03-01]: useStreak Firestore writeback non-blocking (.catch noop) — local computed state is source of truth for display
+- [Phase 03-02]: Recharts 3.x custom tooltip uses TooltipContentProps (not TooltipProps) — passed as function ref content={Fn} not JSX — TooltipProps omits payload/label
+- [Phase 03-02]: react-calendar-heatmap callbacks use [key: string]: unknown index signature to match ReactCalendarHeatmapValue<string> library type
+- [Phase 03-02]: StudyChart getSubjects loaded once on mount — failure is silent since subject dropdown is non-critical for chart display
 - [Phase 03-03]: GoalsSection splits daily/weekly saves into separate buttons — each saves independently, no partial write confusion
 - [Phase 03-03]: Subject goals saved as a batch via single updateGoals call — simpler than per-subject saves
 - [Phase 03-03]: DailyProgressBar getSessions error is non-blocking — bar shows 0 rather than crashing TimerPage
