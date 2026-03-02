@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-02T18:29:23.412Z"
+status: in_progress
+last_updated: "2026-03-02T20:16:43Z"
 progress:
-  total_phases: 2
+  total_phases: 6
   completed_phases: 2
-  total_plans: 6
-  completed_plans: 6
+  total_plans: 11
+  completed_plans: 7
 ---
 
 # Project State
@@ -18,21 +18,21 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-01)
 
 **Core value:** Make studying feel like a sport — personal performance data worth tracking, and a social feed that makes progress visible to the people who matter.
-**Current focus:** Phase 2 — Timer and Sessions (complete)
+**Current focus:** Phase 3 — Stats and Goals (in progress)
 
 ## Current Position
 
-Phase: 2 of 6 (Timer and Sessions) — COMPLETE
-Plan: 3 of 3 in current phase — all complete
-Status: Phase 2 complete, ready for Phase 3
-Last activity: 2026-03-02 — Plan 02-03 completed (human-verify approved)
+Phase: 3 of 6 (Stats and Goals) — IN PROGRESS
+Plan: 1 of 5 in current phase — complete
+Status: Plan 03-01 complete, ready for 03-02
+Last activity: 2026-03-02 — Plan 03-01 completed
 
-Progress: [████████░░] 33%
+Progress: [████████░░] 38%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
+- Total plans completed: 7
 - Average duration: 4 min
 - Total execution time: 0.2 hours
 
@@ -51,6 +51,7 @@ Progress: [████████░░] 33%
 | Phase 02-timer-and-sessions P02 | 2 | 2 tasks | 5 files |
 | Phase 02-timer-and-sessions P03 | 2 | 2 tasks | 3 files |
 | Phase 02-timer-and-sessions P03 | 7 | 3 tasks | 3 files |
+| Phase 03-stats-and-goals P01 | 5 | 3 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -82,6 +83,10 @@ Recent decisions affecting current work:
 - [Phase 02-timer-and-sessions]: Discard is silent with no confirmation dialog — locked decision from plan (02-03)
 - [Phase 02-timer-and-sessions]: Native dialog element used for SessionBottomSheet — ESC, backdrop, focus trap for free (02-03)
 - [Phase 02-timer-and-sessions]: SubjectCombobox fetches subjects once on mount and filters client-side — personal lists are small (<50) (02-03)
+- [Phase 03-01]: date-fns-tz v3 has no startOfDay export — use date-fns startOfDay after toZonedTime for local calendar day boundaries
+- [Phase 03-01]: react-calendar-heatmap locked with --legacy-peer-deps for React 19 compat — no substitution per CONTEXT.md
+- [Phase 03-01]: Goal fields optional on UserProfile — not set by createOrUpdateUserDoc, use ?? fallback downstream
+- [Phase 03-01]: useStreak Firestore writeback non-blocking (.catch noop) — local computed state is source of truth for display
 
 ### Pending Todos
 
@@ -90,10 +95,10 @@ None yet.
 ### Blockers/Concerns
 
 - Phase 5 planning: Cloud Functions Gen 2 fan-out pattern has nuances (cold start, partial batch failure, >500 followers pagination) — flag for research spike during plan-phase 5
-- Phase 3 planning: Streak midnight grace period behavior (show yesterday's streak vs. 0 at midnight) needs UX decision before implementation
+- Phase 3 planning: Streak midnight grace period RESOLVED — yesterday grace period implemented in computeStreaks (lastDay === todayLocal || lastDay === yesterdayLocal)
 
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 02-03-PLAN.md — SubjectCombobox, SessionBottomSheet, fully wired TimerPage, human-verify passed. Phase 2 complete.
+Stopped at: Completed 03-01-PLAN.md — Phase 3 data foundation: deps installed, UserProfile extended, getSessions + updateGoals + addSession increment, useSessions + useStats + useStreak hooks built.
 Resume file: None

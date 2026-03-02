@@ -29,21 +29,21 @@
 
 ### Stats
 
-- [ ] **STAT-01**: User can view an interactive stats chart with time range filters (1D, 1W, 1M, 3M, All) — stock-ticker style
-- [ ] **STAT-02**: Stats chart can be filtered by subject
-- [ ] **STAT-03**: Selected time range shows total study time for that period
-- [ ] **STAT-04**: Monthly heatmap calendar visualises daily study activity
-- [ ] **STAT-05**: Subject breakdown shows time distribution across all subjects (for selected range)
-- [ ] **STAT-06**: All-time cumulative study total is displayed
+- [x] **STAT-01**: User can view an interactive stats chart with time range filters (1D, 1W, 1M, 3M, All) — stock-ticker style
+- [x] **STAT-02**: Stats chart can be filtered by subject
+- [x] **STAT-03**: Selected time range shows total study time for that period
+- [x] **STAT-04**: Monthly heatmap calendar visualises daily study activity
+- [x] **STAT-05**: Subject breakdown shows time distribution across all subjects (for selected range)
+- [x] **STAT-06**: All-time cumulative study total is displayed
 
 ### Goals & Streaks
 
-- [ ] **GOAL-01**: User has a study streak counter (consecutive calendar days with at least one logged session)
-- [ ] **GOAL-02**: Streak day boundaries are calculated in the user's local timezone (not UTC)
-- [ ] **GOAL-03**: User can set a daily study time goal (toggleable on/off)
-- [ ] **GOAL-04**: User can set a weekly study time goal (toggleable on/off)
-- [ ] **GOAL-05**: User can set subject-specific study goals (toggleable on/off per subject)
-- [ ] **GOAL-06**: Daily goal progress bar is visible on the home/timer screen
+- [x] **GOAL-01**: User has a study streak counter (consecutive calendar days with at least one logged session)
+- [x] **GOAL-02**: Streak day boundaries are calculated in the user's local timezone (not UTC)
+- [x] **GOAL-03**: User can set a daily study time goal (toggleable on/off)
+- [x] **GOAL-04**: User can set a weekly study time goal (toggleable on/off)
+- [x] **GOAL-05**: User can set subject-specific study goals (toggleable on/off per subject)
+- [x] **GOAL-06**: Daily goal progress bar is visible on the home/timer screen
 
 ### Social Graph
 
@@ -125,18 +125,18 @@
 | TIMR-05 | Phase 2 | Complete |
 | TIMR-06 | Phase 2 | Complete |
 | TIMR-07 | Phase 2 | Complete |
-| STAT-01 | Phase 3 | Pending |
-| STAT-02 | Phase 3 | Pending |
-| STAT-03 | Phase 3 | Pending |
-| STAT-04 | Phase 3 | Pending |
-| STAT-05 | Phase 3 | Pending |
-| STAT-06 | Phase 3 | Pending |
-| GOAL-01 | Phase 3 | Pending |
-| GOAL-02 | Phase 3 | Pending |
-| GOAL-03 | Phase 3 | Pending |
-| GOAL-04 | Phase 3 | Pending |
-| GOAL-05 | Phase 3 | Pending |
-| GOAL-06 | Phase 3 | Pending |
+| STAT-01 | Phase 3 | Complete |
+| STAT-02 | Phase 3 | Complete |
+| STAT-03 | Phase 3 | Complete |
+| STAT-04 | Phase 3 | Complete |
+| STAT-05 | Phase 3 | Complete |
+| STAT-06 | Phase 3 | Complete |
+| GOAL-01 | Phase 3 | Complete |
+| GOAL-02 | Phase 3 | Complete |
+| GOAL-03 | Phase 3 | Complete |
+| GOAL-04 | Phase 3 | Complete |
+| GOAL-05 | Phase 3 | Complete |
+| GOAL-06 | Phase 3 | Complete |
 | SOCL-01 | Phase 4 | Pending |
 | SOCL-02 | Phase 4 | Pending |
 | SOCL-03 | Phase 4 | Pending |
