@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-02T04:31:12.844Z"
+last_updated: "2026-03-02T18:13:04.335Z"
 progress:
-  total_phases: 1
+  total_phases: 2
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 6
+  completed_plans: 4
 ---
 
 # Project State
@@ -22,12 +22,12 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 
 ## Current Position
 
-Phase: 1 of 6 (Foundation)
-Plan: 3 of 3 in current phase
-Status: Phase complete
-Last activity: 2026-03-02 — Plan 01-03 completed
+Phase: 2 of 6 (Timer and Sessions)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-03-02 — Plan 02-01 completed
 
-Progress: [████░░░░░░] 17%
+Progress: [████░░░░░░] 22%
 
 ## Performance Metrics
 
@@ -47,6 +47,7 @@ Progress: [████░░░░░░] 17%
 - Trend: steady
 
 *Updated after each plan completion*
+| Phase 02-timer-and-sessions P01 | 6 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,9 @@ Recent decisions affecting current work:
 - [Phase 01]: sessions scaffold in Phase 1 rules: write ownership rules added now so Phase 2 sessions writes work without a rules deployment step (01-03)
 - [Phase 01]: PROF-02 partial delivery: followerCount/followingCount rendered as numeric counts in Phase 1; browsable lists deferred to Phase 4 SOCL-03 (01-03)
 - [Phase 01]: getDoc not onSnapshot for ProfilePage: read-only profile display does not warrant real-time subscription cost in Phase 1 (01-03)
+- [Phase 02]: subcollection path users/{uid}/sessions replaces top-level /sessions — matches all Phase 2+ write patterns
+- [Phase 02]: [Phase 02-01]: privacy hardcoded to public in addSession — Phase 5 will enforce granular privacy in rules
+- [Phase 02]: [Phase 02-01]: startTimestamp stored as Timestamp.fromMillis(startMs) not serverTimestamp — anchor-time pattern requires client-captured start
 
 ### Pending Todos
 
@@ -83,5 +87,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 01-03-PLAN.md — Firestore security rules deployed (deny-all default, uid-scoped write), ProfilePage rendering Google avatar/stats/follower counts, Phase 1 human verification approved
+Stopped at: Completed 02-01-PLAN.md — Firestore rules fixed (subcollection paths for sessions+subjects), SessionDocument type + addSession/getSubjects/addSubject helpers created; Firebase deploy pending (run firebase login then firebase use <project-id> then npx firebase deploy --only firestore:rules)
 Resume file: None

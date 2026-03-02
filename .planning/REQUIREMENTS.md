@@ -20,12 +20,12 @@
 ### Timer & Sessions
 
 - [ ] **TIMR-01**: User can start and stop a stopwatch-style timer to log a session
-- [ ] **TIMR-02**: Timer uses anchor-time pattern (elapsed = Date.now() − startTimestamp) to prevent browser tab throttling drift
+- [x] **TIMR-02**: Timer uses anchor-time pattern (elapsed = Date.now() − startTimestamp) to prevent browser tab throttling drift
 - [ ] **TIMR-03**: User can use a Pomodoro-style countdown timer with configurable work/break intervals
-- [ ] **TIMR-04**: User selects a subject before or during a session (user-defined subjects, created on the fly)
+- [x] **TIMR-04**: User selects a subject before or during a session (user-defined subjects, created on the fly)
 - [ ] **TIMR-05**: User can add an optional notes/memo field after stopping a session
-- [ ] **TIMR-06**: Stopping the timer logs a session document (subject, duration, startTimestamp, endTimestamp, notes, privacyLevel, userId)
-- [ ] **TIMR-07**: Each session has a privacy setting (Public / Followers / Private) set before or at logging
+- [x] **TIMR-06**: Stopping the timer logs a session document (subject, duration, startTimestamp, endTimestamp, notes, privacyLevel, userId)
+- [x] **TIMR-07**: Each session has a privacy setting (Public / Followers / Private) set before or at logging
 
 ### Stats
 
@@ -119,12 +119,12 @@
 | PRIV-03 | Phase 1 | Complete |
 | PRIV-04 | Phase 1 | Complete |
 | TIMR-01 | Phase 2 | Pending |
-| TIMR-02 | Phase 2 | Pending |
+| TIMR-02 | Phase 2 | Complete |
 | TIMR-03 | Phase 2 | Pending |
-| TIMR-04 | Phase 2 | Pending |
+| TIMR-04 | Phase 2 | Complete |
 | TIMR-05 | Phase 2 | Pending |
-| TIMR-06 | Phase 2 | Pending |
-| TIMR-07 | Phase 2 | Pending |
+| TIMR-06 | Phase 2 | Complete |
+| TIMR-07 | Phase 2 | Complete |
 | STAT-01 | Phase 3 | Pending |
 | STAT-02 | Phase 3 | Pending |
 | STAT-03 | Phase 3 | Pending |
