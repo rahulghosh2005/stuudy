@@ -1,7 +1,7 @@
-import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import type { User } from 'firebase/auth';
 import { db } from './config';
-import type { UserProfile } from '../types/user';
+import type { UserProfile, SubjectGoal } from '../types/user';
 
 // Called on every sign-in. setDoc with merge:true is idempotent:
 // - On first sign-in: creates the document with zeroed stats
@@ -31,4 +31,20 @@ export async function createOrUpdateUserDoc(user: User): Promise<void> {
   };
 
   await setDoc(userRef, profileData, { merge: true });
+}
+
+// Write partial goal fields to users/{uid}.
+// Goal fields are optional on UserProfile — use profile.dailyGoalEnabled ?? false downstream.
+// Only called when user explicitly sets a goal (not on sign-in).
+export async function updateGoals(
+  uid: string,
+  fields: Partial<{
+    dailyGoalMinutes: number;
+    dailyGoalEnabled: boolean;
+    weeklyGoalMinutes: number;
+    weeklyGoalEnabled: boolean;
+    subjectGoals: Record<string, SubjectGoal>;
+  }>
+): Promise<void> {
+  await updateDoc(doc(db, 'users', uid), fields as Record<string, unknown>);
 }
