@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Auth, user document, Firestore rules scaffold, TypeScript type system
 - [x] **Phase 2: Timer and Sessions** - Core study loop — stopwatch, Pomodoro, subject tagging, session writes (completed 2026-03-02)
-- [ ] **Phase 3: Stats and Goals** - Stats charts, heatmap, streaks, daily/weekly/subject goals
+- [x] **Phase 3: Stats and Goals** - Stats charts, heatmap, streaks, daily/weekly/subject goals (completed 2026-03-02)
 - [ ] **Phase 4: Social Graph** - Follow/unfollow, follower/following lists, follow counts on profile
 - [ ] **Phase 5: Activity Feed and Privacy** - Fan-out feed, likes, server-enforced session privacy
 - [ ] **Phase 6: Live Presence** - Real-time "studying now" via RTDB with crash-safe onDisconnect
@@ -124,7 +124,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete    | 2026-03-02 |
 | 2. Timer and Sessions | 3/3 | Complete    | 2026-03-02 |
-| 3. Stats and Goals | 4/5 | In Progress|  |
+| 3. Stats and Goals | 5/5 | Complete   | 2026-03-02 |
 | 4. Social Graph | 0/TBD | Not started | - |
 | 5. Activity Feed and Privacy | 0/TBD | Not started | - |
 | 6. Live Presence | 0/TBD | Not started | - |
