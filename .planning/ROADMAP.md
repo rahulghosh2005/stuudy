@@ -13,7 +13,7 @@ stuuudy is built in strict dependency order: auth and data foundation first, the
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Auth, user document, Firestore rules scaffold, TypeScript type system
-- [ ] **Phase 2: Timer and Sessions** - Core study loop — stopwatch, Pomodoro, subject tagging, session writes
+- [x] **Phase 2: Timer and Sessions** - Core study loop — stopwatch, Pomodoro, subject tagging, session writes (completed 2026-03-02)
 - [ ] **Phase 3: Stats and Goals** - Stats charts, heatmap, streaks, daily/weekly/subject goals
 - [ ] **Phase 4: Social Graph** - Follow/unfollow, follower/following lists, follow counts on profile
 - [ ] **Phase 5: Activity Feed and Privacy** - Fan-out feed, likes, server-enforced session privacy
@@ -119,7 +119,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete    | 2026-03-02 |
-| 2. Timer and Sessions | 2/3 | In Progress|  |
+| 2. Timer and Sessions | 3/3 | Complete   | 2026-03-02 |
 | 3. Stats and Goals | 0/TBD | Not started | - |
 | 4. Social Graph | 0/TBD | Not started | - |
 | 5. Activity Feed and Privacy | 0/TBD | Not started | - |
