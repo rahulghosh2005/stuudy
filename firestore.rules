@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Deny ALL by default — explicit deny-all catch-all.
+    // Any collection not explicitly matched below is denied.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Users collection:
+    // - Any authenticated user can read any profile (needed for Phase 4 follow lists, Phase 5 feed)
+    // - A user can only WRITE their own document (PRIV-04)
+    // - This prevents user A from writing user B's document
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Sessions collection (Phase 2 will add data; rules scaffold here for PRIV-03):
+    // - Authenticated users can read public sessions (Phase 5 will add privacy enforcement)
+    // - A user can only create/update/delete their own sessions (PRIV-03)
+    match /sessions/{sessionId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+  }
+}
