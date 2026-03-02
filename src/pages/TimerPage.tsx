@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTimer, type TimerStatus, type TimerMode } from '../hooks/useTimer';
 import { TimerDisplay } from '../components/TimerDisplay';
 import { ModeToggle } from '../components/ModeToggle';
 import { SubjectCombobox } from '../components/SubjectCombobox';
 import { SessionBottomSheet } from '../components/SessionBottomSheet';
+import { DailyProgressBar } from '../components/DailyProgressBar';
 import { addSession } from '../firebase/sessions';
 import { useAuth } from '../contexts/AuthContext';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase/config';
 import type { Subject } from '../types/session';
+import type { UserProfile } from '../types/user';
 
 const screenStyle: React.CSSProperties = {
   minHeight: '100vh',
@@ -16,6 +20,7 @@ const screenStyle: React.CSSProperties = {
   alignItems: 'center',
   justifyContent: 'center',
   color: '#fff',
+  paddingBottom: '80px',  // space for BottomTabBar
 };
 
 const btnStyle: React.CSSProperties = {
@@ -36,6 +41,16 @@ export function TimerPage() {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+
+  useEffect(() => {
+    if (!user?.uid) return;
+    getDoc(doc(db, 'users', user.uid))
+      .then(snap => { if (snap.exists()) setProfile(snap.data() as UserProfile); })
+      .catch(() => {});
+  }, [user?.uid]);
+
+  const timezone = profile?.timezone ?? Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   function handleModeChange(mode: TimerMode) {
     setMode(mode);
@@ -83,6 +98,14 @@ export function TimerPage() {
           pomodoroWorkMs={state.pomodoroWorkMs}
           pomodoroBreakMs={state.pomodoroBreakMs}
         />
+        {user && (
+          <DailyProgressBar
+            uid={user.uid}
+            timezone={timezone}
+            dailyGoalMinutes={profile?.dailyGoalMinutes ?? 60}
+            dailyGoalEnabled={profile?.dailyGoalEnabled ?? false}
+          />
+        )}
         <button style={{ ...btnStyle, background: '#e53e3e', color: '#fff' }} onClick={stop}>
           Stop
         </button>
@@ -121,6 +144,14 @@ export function TimerPage() {
         pomodoroWorkMs={state.pomodoroWorkMs}
         pomodoroBreakMs={state.pomodoroBreakMs}
       />
+      {user && (
+        <DailyProgressBar
+          uid={user.uid}
+          timezone={timezone}
+          dailyGoalMinutes={profile?.dailyGoalMinutes ?? 60}
+          dailyGoalEnabled={profile?.dailyGoalEnabled ?? false}
+        />
+      )}
       {saveError && (
         <p style={{ color: '#ff453a', marginTop: '8px' }}>{saveError}</p>
       )}
