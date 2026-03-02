@@ -65,10 +65,14 @@ Plans:
   3. User can see study time broken down by subject for any selected time range, plus an all-time cumulative total
   4. User's study streak (consecutive calendar days) is correct in their local timezone — a user in UTC+9 does not lose their streak at UTC midnight
   5. User can set a daily goal, weekly goal, and per-subject goals (each independently toggleable), and the home screen shows a progress bar toward the daily goal
-**Plans**: TBD
+**Plans**: 5 plans
 
 Plans:
-(To be filled by plan-phase)
+- [ ] 03-01-PLAN.md — Install deps (recharts, react-calendar-heatmap, date-fns-tz), extend UserProfile with goal fields, add getSessions + updateGoals helpers, build useSessions + useStats + useStreak hooks
+- [ ] 03-02-PLAN.md — StudyChart (Recharts area chart with gradient, range filter, subject filter), StudyHeatmap (react-calendar-heatmap with orange CSS injection, year/month toggle), SubjectBreakdown
+- [ ] 03-03-PLAN.md — GoalsSection (daily/weekly/subject goal inputs with toggles and Firestore persistence), DailyProgressBar (today's progress on TimerPage)
+- [ ] 03-04-PLAN.md — BottomTabBar (Timer|Stats|Profile NavLinks), StatsPage assembly, /stats route in App.tsx, wire DailyProgressBar into TimerPage
+- [ ] 03-05-PLAN.md — Human verification of complete Phase 3 experience
 
 ### Phase 4: Social Graph
 **Goal**: Users can build an asymmetric follow network that the feed will fan-out to
@@ -120,7 +124,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete    | 2026-03-02 |
 | 2. Timer and Sessions | 3/3 | Complete    | 2026-03-02 |
-| 3. Stats and Goals | 0/TBD | Not started | - |
+| 3. Stats and Goals | 0/5 | Not started | - |
 | 4. Social Graph | 0/TBD | Not started | - |
 | 5. Activity Feed and Privacy | 0/TBD | Not started | - |
 | 6. Live Presence | 0/TBD | Not started | - |
