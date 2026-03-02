@@ -7,15 +7,15 @@
 
 ### Authentication
 
-- [ ] **AUTH-01**: User can sign in with Google via Firebase Auth
+- [x] **AUTH-01**: User can sign in with Google via Firebase Auth
 - [ ] **AUTH-02**: User's IANA timezone is captured and stored at first sign-in
-- [ ] **AUTH-03**: User session persists across browser refresh
+- [x] **AUTH-03**: User session persists across browser refresh
 
 ### Profile
 
-- [ ] **PROF-01**: User profile displays stats summary (total study hours, current streak, subject breakdown)
+- [x] **PROF-01**: User profile displays stats summary (total study hours, current streak, subject breakdown)
 - [ ] **PROF-02**: User profile displays follower count, following count, and browsable lists of each
-- [ ] **PROF-03**: User display name and avatar are pulled from their Google account
+- [x] **PROF-03**: User display name and avatar are pulled from their Google account
 
 ### Timer & Sessions
 
@@ -110,12 +110,12 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Complete |
 | AUTH-02 | Phase 1 | Pending |
-| AUTH-03 | Phase 1 | Pending |
-| PROF-01 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Complete |
+| PROF-01 | Phase 1 | Complete |
 | PROF-02 | Phase 1 | Pending |
-| PROF-03 | Phase 1 | Pending |
+| PROF-03 | Phase 1 | Complete |
 | PRIV-03 | Phase 1 | Pending |
 | PRIV-04 | Phase 1 | Pending |
 | TIMR-01 | Phase 2 | Pending |

@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 1 of 6 (Foundation)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-03-01 — Roadmap created
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-03-02 — Plan 01-01 completed
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 5%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 2 min
+- Total execution time: 0.03 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 1. Foundation | 1 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: —
+- Last 5 plans: 01-01 (2 min)
 - Trend: —
 
 *Updated after each plan completion*
@@ -47,6 +47,9 @@ Recent decisions affecting current work:
 - RTDB for presence: Firestore alone cannot detect browser crash — onDisconnect() requires RTDB
 - Fan-out on write for feed: Cloud Function fan-out gives O(1) feed reads — must be Cloud Function not client
 - Timer must use anchor-time pattern: Store startTimestamp, derive elapsed from wall-clock delta — never count setInterval ticks
+- Firebase singleton at module level: initializeApp called once in src/firebase/config.ts — never in components or hooks (01-01)
+- VITE_FIREBASE_* env var prefix: all Firebase config via import.meta.env.VITE_FIREBASE_* — never REACT_APP_ or bare env vars (01-01)
+- UserProfile 12-field contract upfront: all phase 1-6 fields defined in src/types/user.ts now to prevent cascading schema changes later (01-01)
 
 ### Pending Todos
 
@@ -59,6 +62,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-01
-Stopped at: Roadmap created — all 6 phases defined, 40 v1 requirements mapped, STATE.md initialized
+Last session: 2026-03-02
+Stopped at: Completed 01-01-PLAN.md — Vite+React+TS scaffolded, Firebase singleton, UserProfile type defined
 Resume file: None
