@@ -20,10 +20,11 @@ decisions:
   - "disabled prop on SubjectCombobox set to stopped (not running) — status is already narrowed past running guard in render branch"
   - "Discard is silent — no confirmation dialog (locked decision from plan)"
   - "durationMs = state.totalElapsed + state.elapsed — full session wall-clock, not just last Pomodoro phase"
+requirements-completed: [TIMR-04, TIMR-05, TIMR-06, TIMR-07]
 metrics:
-  duration: "~2 min (Tasks 1-2; Task 3 awaiting human-verify)"
+  duration: "~7 min (Tasks 1-3 including human-verify checkpoint)"
   completed_date: "2026-03-02"
-  tasks_completed: 2
+  tasks_completed: 3
   tasks_total: 3
   files_created: 2
   files_modified: 1
@@ -84,7 +85,7 @@ None.
 |---|------|--------|--------|
 | 1 | Build SubjectCombobox and SessionBottomSheet | Complete | 7bfce26 |
 | 2 | Wire into TimerPage — complete session loop | Complete | 7fdcf37 |
-| 3 | Human verify complete Phase 2 session loop | Awaiting checkpoint | — |
+| 3 | Human verify complete Phase 2 session loop | Complete — approved | — |
 
 ## Self-Check
 
@@ -96,5 +97,7 @@ Files created:
 Commits: 7bfce26, 7fdcf37 — both exist in git log.
 
 Build: passes (`npm run build` exits 0, TypeScript clean).
+
+Task 3 human-verify checkpoint: user responded "approved" — all 20 verification steps passed.
 
 ## Self-Check: PASSED
