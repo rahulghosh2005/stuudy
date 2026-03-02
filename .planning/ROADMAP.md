@@ -12,7 +12,7 @@ stuuudy is built in strict dependency order: auth and data foundation first, the
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Auth, user document, Firestore rules scaffold, TypeScript type system
+- [x] **Phase 1: Foundation** - Auth, user document, Firestore rules scaffold, TypeScript type system
 - [ ] **Phase 2: Timer and Sessions** - Core study loop — stopwatch, Pomodoro, subject tagging, session writes
 - [ ] **Phase 3: Stats and Goals** - Stats charts, heatmap, streaks, daily/weekly/subject goals
 - [ ] **Phase 4: Social Graph** - Follow/unfollow, follower/following lists, follow counts on profile
@@ -34,9 +34,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Scaffold Vite+React+TS project, install Firebase SDK, define UserProfile type and Firebase singleton
-- [ ] 01-02-PLAN.md — Firebase auth layer: Google sign-in (popup), user doc creation with timezone capture, AuthContext, ProtectedRoute, LoginPage
-- [ ] 01-03-PLAN.md — Firestore security rules, ProfilePage (stats + social counts), end-to-end human verification
+- [x] 01-01-PLAN.md — Scaffold Vite+React+TS project, install Firebase SDK, define UserProfile type and Firebase singleton
+- [x] 01-02-PLAN.md — Firebase auth layer: Google sign-in (popup), user doc creation with timezone capture, AuthContext, ProtectedRoute, LoginPage
+- [x] 01-03-PLAN.md — Firestore security rules, ProfilePage (stats + social counts), end-to-end human verification
 
 ### Phase 2: Timer and Sessions
 **Goal**: Users can track a focused study session from start to finish and have it permanently recorded with accurate duration
@@ -116,7 +116,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 2/3 | In Progress|  |
+| 1. Foundation | 3/3 | Complete | 2026-03-01 |
 | 2. Timer and Sessions | 0/TBD | Not started | - |
 | 3. Stats and Goals | 0/TBD | Not started | - |
 | 4. Social Graph | 0/TBD | Not started | - |

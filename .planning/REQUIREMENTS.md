@@ -14,7 +14,7 @@
 ### Profile
 
 - [x] **PROF-01**: User profile displays stats summary (total study hours, current streak, subject breakdown)
-- [ ] **PROF-02**: User profile displays follower count, following count, and browsable lists of each
+- [x] **PROF-02**: User profile displays follower count, following count, and browsable lists of each
 - [x] **PROF-03**: User display name and avatar are pulled from their Google account
 
 ### Timer & Sessions
@@ -69,8 +69,8 @@
 
 - [ ] **PRIV-01**: Firestore security rules enforce session privacy for all three levels (Public / Followers / Private)
 - [ ] **PRIV-02**: Followers-only session reads require the follow relationship to be verified inside Firestore security rules (not client-side)
-- [ ] **PRIV-03**: Users can only create, edit, and delete their own sessions
-- [ ] **PRIV-04**: Users can only write their own user document and presence record
+- [x] **PRIV-03**: Users can only create, edit, and delete their own sessions
+- [x] **PRIV-04**: Users can only write their own user document and presence record
 
 ## v2 Requirements
 
@@ -114,10 +114,10 @@
 | AUTH-02 | Phase 1 | Complete |
 | AUTH-03 | Phase 1 | Complete |
 | PROF-01 | Phase 1 | Complete |
-| PROF-02 | Phase 1 | Pending |
+| PROF-02 | Phase 1 | Complete |
 | PROF-03 | Phase 1 | Complete |
-| PRIV-03 | Phase 1 | Pending |
-| PRIV-04 | Phase 1 | Pending |
+| PRIV-03 | Phase 1 | Complete |
+| PRIV-04 | Phase 1 | Complete |
 | TIMR-01 | Phase 2 | Pending |
 | TIMR-02 | Phase 2 | Pending |
 | TIMR-03 | Phase 2 | Pending |
