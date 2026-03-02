@@ -1,3 +1,16 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: unknown
+last_updated: "2026-03-02T00:28:44.911Z"
+progress:
+  total_phases: 1
+  completed_phases: 0
+  total_plans: 3
+  completed_plans: 2
+---
+
 # Project State
 
 ## Project Reference
@@ -10,27 +23,27 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 1 of 6 (Foundation)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-03-02 — Plan 01-01 completed
+Last activity: 2026-03-02 — Plan 01-02 completed
 
-Progress: [█░░░░░░░░░] 5%
+Progress: [██░░░░░░░░] 10%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 2 min
-- Total execution time: 0.03 hours
+- Total plans completed: 2
+- Average duration: 3.5 min
+- Total execution time: 0.12 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1. Foundation | 1 | 2 min | 2 min |
+| 1. Foundation | 2 | 7 min | 3.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (2 min)
+- Last 5 plans: 01-01 (2 min), 01-02 (5 min)
 - Trend: —
 
 *Updated after each plan completion*
@@ -50,6 +63,9 @@ Recent decisions affecting current work:
 - Firebase singleton at module level: initializeApp called once in src/firebase/config.ts — never in components or hooks (01-01)
 - VITE_FIREBASE_* env var prefix: all Firebase config via import.meta.env.VITE_FIREBASE_* — never REACT_APP_ or bare env vars (01-01)
 - UserProfile 12-field contract upfront: all phase 1-6 fields defined in src/types/user.ts now to prevent cascading schema changes later (01-01)
+- [Phase 01]: signInWithPopup over signInWithRedirect: popup avoids third-party cookie blocking on Chrome 115+/Safari 16.1+/Firefox 109+
+- [Phase 01]: setDoc with merge:true for idempotent user document writes: preserves stats/counts owned by later phases
+- [Phase 01]: AuthProvider loading guard at provider level: single point prevents flash of protected content and spurious /login redirect
 
 ### Pending Todos
 
@@ -63,5 +79,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 01-01-PLAN.md — Vite+React+TS scaffolded, Firebase singleton, UserProfile type defined
+Stopped at: Completed 01-02-PLAN.md — Firebase Auth layer: signInWithGoogle popup, idempotent user document writer, AuthContext with loading guard, ProtectedRoute, LoginPage
 Resume file: None

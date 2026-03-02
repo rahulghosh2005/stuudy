@@ -116,7 +116,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 1/3 | In Progress|  |
+| 1. Foundation | 2/3 | In Progress|  |
 | 2. Timer and Sessions | 0/TBD | Not started | - |
 | 3. Stats and Goals | 0/TBD | Not started | - |
 | 4. Social Graph | 0/TBD | Not started | - |
