@@ -19,9 +19,9 @@
 
 ### Timer & Sessions
 
-- [ ] **TIMR-01**: User can start and stop a stopwatch-style timer to log a session
+- [x] **TIMR-01**: User can start and stop a stopwatch-style timer to log a session
 - [x] **TIMR-02**: Timer uses anchor-time pattern (elapsed = Date.now() − startTimestamp) to prevent browser tab throttling drift
-- [ ] **TIMR-03**: User can use a Pomodoro-style countdown timer with configurable work/break intervals
+- [x] **TIMR-03**: User can use a Pomodoro-style countdown timer with configurable work/break intervals
 - [x] **TIMR-04**: User selects a subject before or during a session (user-defined subjects, created on the fly)
 - [ ] **TIMR-05**: User can add an optional notes/memo field after stopping a session
 - [x] **TIMR-06**: Stopping the timer logs a session document (subject, duration, startTimestamp, endTimestamp, notes, privacyLevel, userId)
@@ -118,9 +118,9 @@
 | PROF-03 | Phase 1 | Complete |
 | PRIV-03 | Phase 1 | Complete |
 | PRIV-04 | Phase 1 | Complete |
-| TIMR-01 | Phase 2 | Pending |
+| TIMR-01 | Phase 2 | Complete |
 | TIMR-02 | Phase 2 | Complete |
-| TIMR-03 | Phase 2 | Pending |
+| TIMR-03 | Phase 2 | Complete |
 | TIMR-04 | Phase 2 | Complete |
 | TIMR-05 | Phase 2 | Pending |
 | TIMR-06 | Phase 2 | Complete |
