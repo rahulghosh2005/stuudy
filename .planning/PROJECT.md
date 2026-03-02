@@ -12,47 +12,47 @@ Make studying feel like a sport: personal performance data that's worth tracking
 
 ### Validated
 
-(None yet — ship to validate)
+**Auth & Profile** (v1.0)
+- ✓ User can sign in with Google via Firebase Auth — v1.0
+- ✓ IANA timezone captured silently at first sign-in — v1.0
+- ✓ Session persists across browser refresh — v1.0
+- ✓ Profile displays stats summary, follower/following counts — v1.0
+- ✓ Display name and avatar from Google account — v1.0
+
+**Timer & Sessions** (v1.0)
+- ✓ User can start a stopwatch-style timer and stop it to log a session — v1.0
+- ✓ Timer uses anchor-time pattern (no drift from tab backgrounding) — v1.0
+- ✓ User can use a Pomodoro-style countdown timer with configurable intervals — v1.0
+- ✓ User selects a subject/tag before or during a session (created on the fly) — v1.0
+- ✓ User can add an optional notes/memo field after stopping a session — v1.0
+- ✓ Sessions record subject, duration, timestamp, notes, privacy level — v1.0
+
+**Stats & Goals** (v1.0)
+- ✓ Interactive stats chart with 1D/1W/1M/3M/All range filters + subject filter — v1.0
+- ✓ Monthly heatmap calendar with orange color scale — v1.0
+- ✓ Study time broken down by subject for selected range — v1.0
+- ✓ All-time cumulative study total displayed — v1.0
+- ✓ Study streak (consecutive calendar days, IANA-timezone-correct) — v1.0
+- ✓ Daily, weekly, and per-subject goals (each independently toggleable) — v1.0
+- ✓ Daily goal progress bar on home/timer screen — v1.0
 
 ### Active
 
-**Timer & Sessions**
-- [ ] User can start a stopwatch-style timer and stop it to log a session
-- [ ] User can use a Pomodoro-style countdown timer with configurable intervals
-- [ ] User selects a subject/tag before or during a session
-- [ ] User can add an optional notes/memo field after stopping a session
-- [ ] Sessions record subject, duration, timestamp, and privacy level
-
-**Stats & Goals**
-- [ ] User sees today's total study time prominently on the home screen
-- [ ] User can view weekly activity bar chart and monthly heatmap calendar
-- [ ] User can view study time broken down by subject
-- [ ] User can set a daily time goal (toggleable)
-- [ ] User can set a weekly time goal (toggleable)
-- [ ] User can set subject-specific goals (toggleable)
-- [ ] User has a study streak (consecutive days studied), visible on home screen
-
-**Social Feed**
-- [ ] User can see a feed of sessions from people they follow (completed + live)
-- [ ] Feed cards show: avatar, name, "Studied X mins – Subject", timestamp, like/comment actions
-- [ ] User can see when a followed user is actively studying right now ("studying live")
-- [ ] User can like a session
-- [ ] User can comment on a session
-
-**Social Graph**
+**Social Graph** (v1.1 target)
 - [ ] User can follow another user (asymmetric — no approval required)
 - [ ] User can unfollow a user
 - [ ] User can view their followers and following lists
 
-**Privacy**
-- [ ] Each session has a privacy setting: Public / Followers / Private
-- [ ] Private sessions are invisible to others
-- [ ] Followers-only sessions are visible only to approved followers
+**Activity Feed & Privacy** (v1.1 target)
+- [ ] User sees a feed of sessions from followed users (completed + live)
+- [ ] Feed cards: avatar, name, "Studied X mins – Subject", timestamp, like button
+- [ ] User can like a session (one like per user per session)
+- [ ] Privacy enforced server-side: Private never shown, Followers-only requires verified follow
+- [ ] Session privacy setting: Public / Followers / Private
 
-**Auth & Profile**
-- [ ] User can sign in with Google via Firebase Auth
-- [ ] User has a profile with stats summary, activity history, follower/following counts
-- [ ] User can access privacy settings from their profile
+**Live Presence** (v1.1 target)
+- [ ] "Studying now" live badge for followed users actively in a timer session
+- [ ] Presence clears automatically via RTDB onDisconnect() on browser close/crash
 
 ### Out of Scope
 
@@ -100,16 +100,25 @@ Make studying feel like a sport: personal performance data that's worth tracking
 
 **Profile:** Stats summary at top, activity history, privacy settings, follow lists
 
+## Context
+
+**Shipped v1.0 (2026-03-02):** 2,202 LOC TypeScript, 3 phases, 11 plans, 84 files.
+**Stack:** React 19 + Vite, Firebase Auth + Firestore (subcollection sessions), Recharts 3.x, react-calendar-heatmap, date-fns-tz v3.
+**Known tech notes:** react-calendar-heatmap requires `--legacy-peer-deps` (React 19 peer dep not declared). Recharts 3.x `TooltipProps` changed to `TooltipContentProps<number, string>`. date-fns-tz v3 renamed `utcToZonedTime` → `toZonedTime`.
+
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Firebase Auth (Google only) | Simplest auth for v1, users likely have Google accounts | — Pending |
-| Firestore as primary DB | Real-time updates for live feed, pairs naturally with Firebase Auth | — Pending |
-| Web-first (not native mobile) | Faster to ship, works on all devices, mobile-responsive | — Pending |
-| Asymmetric follow model | Strava model — follow anyone publicly, no friction | — Pending |
-| No gamification in v1 | Keep v1 clean and athletic; gamification in future milestones | — Pending |
-| Stopwatch + Pomodoro both | User chooses mode per session — maximizes flexibility | — Pending |
+| Firebase Auth (Google only) | Simplest auth for v1 | ✓ Good — zero friction sign-in |
+| Firestore as primary DB | Real-time updates, pairs with Firebase Auth | ✓ Good — subcollection per-user sessions works cleanly |
+| Web-first (not native mobile) | Faster to ship, mobile-responsive | ✓ Good — bottom tab bar works on mobile |
+| Anchor-time timer pattern | Prevents drift from tab backgrounding | ✓ Good — confirmed correct in testing |
+| Asymmetric follow model | Strava model, no friction | — Pending (Phase 4) |
+| No gamification in v1 | Keep v1 clean and athletic | ✓ Good — aesthetic is clean |
+| Stopwatch + Pomodoro both | User chooses mode per session | ✓ Good — flexibility valued |
+| Client-side streak recalculation | Avoids Cloud Function complexity | ✓ Acceptable — recalculates on stats load |
+| Inline styles (no Tailwind/CSS modules) | Project convention set in Phase 1 | ⚠️ Revisit — verbose but consistent |
 
 ---
-*Last updated: 2026-03-01 after initialization*
+*Last updated: 2026-03-02 after v1.0 milestone*
