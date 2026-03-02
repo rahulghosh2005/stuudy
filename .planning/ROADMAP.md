@@ -48,10 +48,12 @@ Plans:
   3. User can select or create a subject before or during a session (subjects created on the fly are persisted for future sessions)
   4. User can add an optional notes/memo after stopping a session before it is saved
   5. A logged session document contains subject, duration, start/end timestamps, notes, privacy level, and userId — and the elapsed time matches wall-clock time even if the tab was backgrounded
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-(To be filled by plan-phase)
+- [ ] 02-01-PLAN.md — Fix Firestore rules (top-level sessions → subcollection), define SessionDocument + Subject types, addSession/getSubjects/addSubject helpers
+- [ ] 02-02-PLAN.md — useTimer hook (anchor-time reducer, stopwatch + Pomodoro), TimerDisplay, ModeToggle, TimerPage, wire / route in App.tsx
+- [ ] 02-03-PLAN.md — SubjectCombobox, SessionBottomSheet, wire addSession into TimerPage, human verification of complete session loop
 
 ### Phase 3: Stats and Goals
 **Goal**: Users can see exactly how much they have studied and track progress toward personal goals with streak continuity respected across timezones
@@ -117,7 +119,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete    | 2026-03-02 |
-| 2. Timer and Sessions | 0/TBD | Not started | - |
+| 2. Timer and Sessions | 0/3 | Not started | - |
 | 3. Stats and Goals | 0/TBD | Not started | - |
 | 4. Social Graph | 0/TBD | Not started | - |
 | 5. Activity Feed and Privacy | 0/TBD | Not started | - |
