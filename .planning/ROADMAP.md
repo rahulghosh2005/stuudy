@@ -124,7 +124,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete    | 2026-03-02 |
 | 2. Timer and Sessions | 3/3 | Complete    | 2026-03-02 |
-| 3. Stats and Goals | 1/5 | In Progress|  |
+| 3. Stats and Goals | 2/5 | In Progress|  |
 | 4. Social Graph | 0/TBD | Not started | - |
 | 5. Activity Feed and Privacy | 0/TBD | Not started | - |
 | 6. Live Presence | 0/TBD | Not started | - |
