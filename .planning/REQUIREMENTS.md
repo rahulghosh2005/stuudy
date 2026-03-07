@@ -144,27 +144,84 @@
 
 ## Traceability
 
-*Updated during roadmap creation.*
+*Updated after roadmap creation: 2026-03-06*
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01–05 | Phase 1 | Pending |
-| PROF-01–05 | Phase 1 | Pending |
-| COUR-01–04 | Phase 2 | Pending |
-| SESS-01–07 | Phase 2 | Pending |
-| LIVE-01–05 | Phase 3 | Pending |
-| SOCL-01–05 | Phase 4 | Pending |
-| ROOM-01–08 | Phase 5 | Pending |
-| GRADE-01–05 | Phase 5 | Pending |
-| ANLX-01–05 | Phase 6 | Pending |
-| ONBD-01–03 | Phase 1 | Pending |
-| UI-01–07 | Phase 7 | Pending |
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Pending |
+| AUTH-05 | Phase 1 | Pending |
+| PROF-01 | Phase 1 | Pending |
+| PROF-02 | Phase 1 | Pending |
+| PROF-03 | Phase 1 | Pending |
+| PROF-04 | Phase 1 | Pending |
+| PROF-05 | Phase 1 | Pending |
+| ONBD-01 | Phase 1 | Pending |
+| ONBD-02 | Phase 1 | Pending |
+| ONBD-03 | Phase 1 | Pending |
+| COUR-01 | Phase 2 | Pending |
+| COUR-02 | Phase 2 | Pending |
+| COUR-03 | Phase 2 | Pending |
+| COUR-04 | Phase 2 | Pending |
+| SESS-01 | Phase 2 | Pending |
+| SESS-02 | Phase 2 | Pending |
+| SESS-03 | Phase 2 | Pending |
+| SESS-04 | Phase 2 | Pending |
+| SESS-05 | Phase 2 | Pending |
+| SESS-06 | Phase 2 | Pending |
+| SESS-07 | Phase 2 | Pending |
+| LIVE-01 | Phase 3 | Pending |
+| LIVE-02 | Phase 3 | Pending |
+| LIVE-03 | Phase 3 | Pending |
+| LIVE-04 | Phase 3 | Pending |
+| LIVE-05 | Phase 3 | Pending |
+| SOCL-01 | Phase 4 | Pending |
+| SOCL-02 | Phase 4 | Pending |
+| SOCL-03 | Phase 4 | Pending |
+| SOCL-04 | Phase 4 | Pending |
+| SOCL-05 | Phase 4 | Pending |
+| ROOM-01 | Phase 5 | Pending |
+| ROOM-02 | Phase 5 | Pending |
+| ROOM-03 | Phase 5 | Pending |
+| ROOM-04 | Phase 5 | Pending |
+| ROOM-05 | Phase 5 | Pending |
+| ROOM-06 | Phase 5 | Pending |
+| ROOM-07 | Phase 5 | Pending |
+| ROOM-08 | Phase 5 | Pending |
+| GRADE-01 | Phase 5 | Pending |
+| GRADE-02 | Phase 5 | Pending |
+| GRADE-03 | Phase 5 | Pending |
+| GRADE-04 | Phase 5 | Pending |
+| GRADE-05 | Phase 5 | Pending |
+| ANLX-01 | Phase 6 | Pending |
+| ANLX-02 | Phase 6 | Pending |
+| ANLX-03 | Phase 6 | Pending |
+| ANLX-04 | Phase 6 | Pending |
+| ANLX-05 | Phase 6 | Pending |
+| UI-01 | Phase 7 | Pending |
+| UI-02 | Phase 7 | Pending |
+| UI-03 | Phase 7 | Pending |
+| UI-04 | Phase 7 | Pending |
+| UI-05 | Phase 7 | Pending |
+| UI-06 | Phase 7 | Pending |
+| UI-07 | Phase 7 | Pending |
 
 **Coverage:**
-- v1 requirements: 56 total
-- Mapped to phases: 56
-- Unmapped: 0 ✓
+- v1 requirements: 59 total
+- Mapped to phases: 59
+- Unmapped: 0
+
+**Phase breakdown:**
+- Phase 1 (Foundation + Auth + Onboarding): AUTH-01–05, PROF-01–05, ONBD-01–03 — 13 requirements
+- Phase 2 (Core Session Loop): COUR-01–04, SESS-01–07 — 11 requirements
+- Phase 3 (Real-Time Presence + Live Feed): LIVE-01–05 — 5 requirements
+- Phase 4 (Social Graph + Full Feed): SOCL-01–05 — 5 requirements
+- Phase 5 (Classrooms + Grades): ROOM-01–08, GRADE-01–05 — 13 requirements
+- Phase 6 (Analytics): ANLX-01–05 — 5 requirements
+- Phase 7 (UI Polish Pass): UI-01–07 — 7 requirements
 
 ---
 *Requirements defined: 2026-03-06*
-*Last updated: 2026-03-06 after initial definition*
+*Last updated: 2026-03-06 after roadmap creation*
