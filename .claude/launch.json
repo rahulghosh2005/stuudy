@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "stuuudy",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd /Users/rahulghosh/Desktop/stuuudy && npm run dev"],
+      "port": 5173
+    }
+  ]
+}
