@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc, query, orderBy, serverTimestamp } from 'firebase/firestore';
+import { collection, getDocs, addDoc, deleteDoc, query, orderBy, serverTimestamp, doc } from 'firebase/firestore';
 import { db } from './config';
 import type { Subject } from '../types/session';
 
@@ -8,7 +8,7 @@ export async function getSubjects(uid: string): Promise<Subject[]> {
   const snap = await getDocs(
     query(collection(db, 'users', uid, 'subjects'), orderBy('name'))
   );
-  return snap.docs.map(doc => ({ id: doc.id, name: doc.data().name as string }));
+  return snap.docs.map(d => ({ id: d.id, name: d.data().name as string }));
 }
 
 // Create a new subject and return the saved Subject (with Firestore-generated id).
@@ -18,4 +18,9 @@ export async function addSubject(uid: string, name: string): Promise<Subject> {
     createdAt: serverTimestamp(),
   });
   return { id: ref.id, name: name.trim() };
+}
+
+// Delete a subject by id.
+export async function deleteSubject(uid: string, subjectId: string): Promise<void> {
+  await deleteDoc(doc(db, 'users', uid, 'subjects', subjectId));
 }

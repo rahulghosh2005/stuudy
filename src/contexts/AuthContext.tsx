@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import type { User } from 'firebase/auth';
 import { auth } from '../firebase/config';
+import { createOrUpdateUserDoc } from '../firebase/users';
 
 interface AuthContextValue {
   user: User | null;
@@ -20,6 +21,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Firebase Auth default persistence is LOCAL (survives tab close) — no configuration needed.
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
+
+      // Keep Firestore profile in sync with Auth session recovery too.
+      // This avoids "User not found" states after refresh if the profile doc is missing.
+      if (firebaseUser) {
+        void createOrUpdateUserDoc(firebaseUser).catch((err) => {
+          console.error('[AuthContext] failed to sync user profile document', err);
+        });
+      }
+
       setLoading(false);
     });
     return unsubscribe; // Clean up listener on unmount
@@ -28,7 +38,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Do NOT render children while loading — prevents flash of protected content
   if (loading) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#0a0a0a', color: '#fff' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: 'var(--bg)', color: 'var(--text)' }}>
         Loading...
       </div>
     );

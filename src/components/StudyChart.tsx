@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from 'recharts';
 import type { TooltipContentProps } from 'recharts';
+import { BarChart2 } from 'lucide-react';
 import { aggregateSessions } from '../hooks/useStats';
 import { getSubjects } from '../firebase/subjects';
 import type { TimeRange } from '../hooks/useSessions';
@@ -30,8 +31,8 @@ function CustomTooltip({ active, payload, label }: TooltipContentProps<number, s
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
   return (
-    <div style={{ background: '#1a1a1a', border: '1px solid #333', borderRadius: 6, padding: '8px 12px' }}>
-      <p style={{ color: '#888', margin: 0, fontSize: 12 }}>{label}</p>
+    <div style={{ background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 6, padding: '8px 12px' }}>
+      <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: 12 }}>{label}</p>
       <p style={{ color: '#fc4c02', margin: '4px 0 0', fontWeight: 700 }}>
         {hours > 0 ? `${hours}h ${mins}m` : `${mins}m`}
       </p>
@@ -79,8 +80,8 @@ export function StudyChart({ sessions, timezone, uid, onRangeChange, onSubjectCh
                 fontSize: 12,
                 border: 'none',
                 cursor: 'pointer',
-                background: range === r ? '#fc4c02' : '#1a1a1a',
-                color: range === r ? '#fff' : '#888',
+                background: range === r ? '#fc4c02' : 'var(--card)',
+                color: range === r ? '#fff' : 'var(--text-secondary)',
               }}
             >
               {r}
@@ -91,9 +92,9 @@ export function StudyChart({ sessions, timezone, uid, onRangeChange, onSubjectCh
           value={subjectId ?? ''}
           onChange={e => handleSubjectChange(e.target.value)}
           style={{
-            background: '#1a1a1a',
-            color: '#fff',
-            border: '1px solid #333',
+            background: 'var(--card)',
+            color: 'var(--text)',
+            border: '1px solid var(--border)',
             borderRadius: 6,
             padding: '4px 8px',
             fontSize: 12,
@@ -112,13 +113,28 @@ export function StudyChart({ sessions, timezone, uid, onRangeChange, onSubjectCh
           style={{
             height: 220,
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#555',
-            fontSize: 14,
+            gap: 10,
           }}
         >
-          No sessions in this period
+          <div style={{
+            width: 44, height: 44,
+            background: 'var(--accent-muted)',
+            borderRadius: 12,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <BarChart2 size={20} color="var(--accent)" strokeWidth={1.5} />
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-secondary)', marginBottom: 3 }}>
+              No sessions yet
+            </div>
+            <div style={{ fontSize: 12, color: 'var(--text-tertiary)', fontWeight: 500 }}>
+              Start a timer to track your first session
+            </div>
+          </div>
         </div>
       ) : (
         <ResponsiveContainer width="100%" height={220}>
@@ -129,9 +145,9 @@ export function StudyChart({ sessions, timezone, uid, onRangeChange, onSubjectCh
                 <stop offset="95%" stopColor="#fc4c02" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" vertical={false} />
-            <XAxis dataKey="label" stroke="transparent" tick={{ fill: '#666', fontSize: 10 }} />
-            <YAxis stroke="transparent" tick={{ fill: '#666', fontSize: 10 }} />
+            <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+            <XAxis dataKey="label" stroke="transparent" tick={{ fill: 'var(--text-secondary)', fontSize: 10 }} />
+            <YAxis stroke="transparent" tick={{ fill: 'var(--text-secondary)', fontSize: 10 }} />
             <Tooltip
               content={CustomTooltip}
               cursor={{ stroke: '#fc4c02', strokeWidth: 1, strokeDasharray: '4 4' }}
@@ -144,7 +160,7 @@ export function StudyChart({ sessions, timezone, uid, onRangeChange, onSubjectCh
               fill="url(#orangeFill)"
               fillOpacity={1}
               dot={false}
-              activeDot={{ r: 4, fill: '#fc4c02', stroke: '#0a0a0a', strokeWidth: 2 }}
+              activeDot={{ r: 4, fill: '#fc4c02', stroke: 'var(--bg)', strokeWidth: 2 }}
             />
           </AreaChart>
         </ResponsiveContainer>

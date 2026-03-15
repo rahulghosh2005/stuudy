@@ -32,4 +32,7 @@ export interface UserProfile {
   // Phase 4 also adds browsable follower/following lists (full PROF-02 delivery)
   followerCount: number;
   followingCount: number;
+  // Profile customization
+  bio?: string;
+  customPhotoURL?: string;
 }

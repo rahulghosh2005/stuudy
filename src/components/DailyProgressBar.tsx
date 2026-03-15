@@ -48,12 +48,12 @@ export function DailyProgressBar({ uid, timezone, dailyGoalMinutes, dailyGoalEna
   return (
     <div style={{ width: '100%', maxWidth: 300, margin: '12px auto 0' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-        <span style={{ color: '#888', fontSize: 11 }}>
+        <span style={{ color: 'var(--text-secondary)', fontSize: 11 }}>
           {formatMin(todayMinutes)} / {formatMin(dailyGoalMinutes)} goal
         </span>
         <span
           style={{
-            color: pct >= 100 ? '#fc4c02' : '#888',
+            color: pct >= 100 ? '#fc4c02' : 'var(--text-secondary)',
             fontSize: 11,
             fontWeight: pct >= 100 ? 700 : 400,
           }}
@@ -61,7 +61,7 @@ export function DailyProgressBar({ uid, timezone, dailyGoalMinutes, dailyGoalEna
           {pct}%
         </span>
       </div>
-      <div style={{ background: '#1a1a1a', borderRadius: 3, height: 4 }}>
+      <div style={{ background: 'var(--card)', borderRadius: 3, height: 4 }}>
         <div
           style={{
             background: '#fc4c02',

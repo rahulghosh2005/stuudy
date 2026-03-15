@@ -1,11 +1,53 @@
+/* Tailwind v4: @import must precede all other CSS rules */
+@import "tailwindcss/utilities";
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* ── Space-dark theme (default) ─────────────────────────────── */
+  --bg: #07070e;
+  --bg-secondary: #0d0d18;
+  --card: #0f0f1c;
+  --card-alt: #12121f;
+  --card-hover: #181828;
+  --text: #e8e8f0;
+  --text-secondary: #7070a0;
+  --text-tertiary: #3a3a5a;
+  --border: #1e1e34;
+  --border-alt: #2a2a45;
+  --input-bg: #0d0d1a;
+  --accent: #fc4c02;
+  --accent-hover: #e04400;
+  --accent-muted: rgba(252, 76, 2, 0.12);
+  --accent-glow: rgba(252, 76, 2, 0.28);
+  --success: #22c55e;
+  --error: #ef4444;
+
+  /* Tailwind v4 color tokens — shadcn compat */
+  --color-foreground: #e8e8f0;
+  --color-background: #07070e;
+  --color-primary: #fc4c02;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #0f0f1c;
+  --color-secondary-foreground: #e8e8f0;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-muted: #0f0f1c;
+  --color-muted-foreground: #7070a0;
+  --color-accent: #1e1e34;
+  --color-accent-foreground: #e8e8f0;
+  --color-card: #0f0f1c;
+  --color-card-foreground: #e8e8f0;
+  --color-border: #1e1e34;
+  --color-input: #1e1e34;
+  --color-ring: #fc4c02;
+  --radius: 0.5rem;
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: dark;
+  color: var(--text);
+  background-color: var(--bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,56 +55,159 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html[data-theme="light"] {
+  --bg: #f0f0f5;
+  --bg-secondary: #ffffff;
+  --card: #ffffff;
+  --card-alt: #fafafa;
+  --card-hover: #f5f5f9;
+  --text: #1a1a2e;
+  --text-secondary: #6060a0;
+  --text-tertiary: #b0b0c8;
+  --border: #e0e0ec;
+  --border-alt: #ccccde;
+  --input-bg: #ffffff;
+  --accent: #fc4c02;
+  --accent-hover: #e04400;
+  --accent-muted: rgba(252, 76, 2, 0.10);
+  --accent-glow: rgba(252, 76, 2, 0.18);
+  --success: #16a34a;
+  --error: #dc2626;
+  color-scheme: light;
+
+  /* Tailwind v4 tokens for light mode */
+  --color-foreground: #1a1a2e;
+  --color-background: #f0f0f5;
+  --color-primary: #fc4c02;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #ffffff;
+  --color-secondary-foreground: #1a1a2e;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-muted: #f0f0f5;
+  --color-muted-foreground: #6060a0;
+  --color-accent: #e0e0ec;
+  --color-accent-foreground: #1a1a2e;
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1a2e;
+  --color-border: #e0e0ec;
+  --color-input: #e0e0ec;
+  --color-ring: #fc4c02;
 }
 
+/* ── Star field ─────────────────────────────────────────────────── */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--bg);
+  /* Subtle star dots via radial-gradients tiled across the viewport */
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.20) 1px, transparent 1px);
+  background-size: 220px 220px, 360px 360px, 500px 500px;
+  background-position: 0 0, 110px 80px, 50px 160px;
+  color: var(--text);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Hide stars in light mode — they'd be invisible on white anyway */
+html[data-theme="light"] body {
+  background-image: none;
+}
+
+/* ── Reset & global ─────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+a {
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: inherit;
+  transition: opacity 0.15s;
+}
+a:hover {
+  opacity: 0.8;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-weight: 600;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--card);
+  color: var(--text);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.15s ease;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--border-alt);
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+button:active {
+  transform: scale(0.98);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Utility: accent button */
+.btn-accent {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.btn-accent:hover {
+  background: var(--accent-hover) !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-alt);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Mobile: hide sidebars, show bottom tab bar */
+@media (max-width: 768px) {
+  .left-sidebar,
+  .right-sidebar {
+    display: none !important;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  .bottom-tab-bar {
+    display: flex !important;
   }
 }
+
+/* Desktop: hide bottom tab bar */
+@media (min-width: 769px) {
+  .bottom-tab-bar {
+    display: none !important;
+  }
+}
+
+/* (Tailwind import is at the top of this file — see line 1) */

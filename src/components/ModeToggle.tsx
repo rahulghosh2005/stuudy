@@ -7,45 +7,42 @@ interface ModeToggleProps {
 }
 
 export function ModeToggle({ mode, disabled, onModeChange }: ModeToggleProps) {
-  const baseStyle: React.CSSProperties = {
-    padding: '8px 20px',
-    border: 'none',
-    borderRadius: '8px',
-    fontSize: '15px',
-    fontWeight: 600,
-    cursor: disabled ? 'default' : 'pointer',
-    opacity: disabled ? 0.5 : 1,
-    transition: 'background 0.15s',
-  };
-
-  const activeStyle: React.CSSProperties = {
-    ...baseStyle,
-    background: '#fff',
-    color: '#111',
-  };
-
-  const inactiveStyle: React.CSSProperties = {
-    ...baseStyle,
-    background: '#333',
-    color: '#aaa',
-  };
-
   return (
-    <div style={{ display: 'flex', gap: '8px', marginBottom: '24px' }}>
-      <button
-        style={mode === 'stopwatch' ? activeStyle : inactiveStyle}
-        onClick={() => !disabled && onModeChange('stopwatch')}
-        disabled={disabled && mode !== 'stopwatch'}
-      >
-        Stopwatch
-      </button>
-      <button
-        style={mode === 'pomodoro' ? activeStyle : inactiveStyle}
-        onClick={() => !disabled && onModeChange('pomodoro')}
-        disabled={disabled && mode !== 'pomodoro'}
-      >
-        Pomodoro
-      </button>
+    <div style={{
+      display: 'flex',
+      background: 'var(--card)',
+      border: '1px solid var(--border)',
+      borderRadius: '12px',
+      padding: '4px',
+      marginBottom: '32px',
+      gap: '2px',
+    }}>
+      {(['stopwatch', 'pomodoro'] as TimerMode[]).map(m => {
+        const isActive = mode === m;
+        return (
+          <button
+            key={m}
+            onClick={() => !disabled && onModeChange(m)}
+            disabled={disabled && mode !== m}
+            style={{
+              padding: '8px 20px',
+              border: 'none',
+              borderRadius: '9px',
+              fontSize: '13px',
+              fontWeight: isActive ? 700 : 500,
+              cursor: disabled && mode !== m ? 'default' : 'pointer',
+              opacity: disabled && mode !== m ? 0.4 : 1,
+              background: isActive ? 'var(--accent)' : 'transparent',
+              color: isActive ? '#fff' : 'var(--text-secondary)',
+              transition: 'all 0.15s ease',
+              letterSpacing: isActive ? '-0.01em' : '0',
+              boxShadow: isActive ? '0 2px 8px rgba(252,76,2,0.3)' : 'none',
+            }}
+          >
+            {m === 'stopwatch' ? 'Stopwatch' : 'Pomodoro'}
+          </button>
+        );
+      })}
     </div>
   );
 }

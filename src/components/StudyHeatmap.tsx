@@ -8,12 +8,12 @@ interface StudyHeatmapProps {
 }
 
 const HEATMAP_STYLE = `
-  .color-scale-0 { fill: #1a1a1a; }
+  .color-scale-0 { fill: var(--card); }
   .color-scale-1 { fill: #7a2500; }
   .color-scale-2 { fill: #b83800; }
   .color-scale-3 { fill: #e04000; }
   .color-scale-4 { fill: #fc4c02; }
-  .react-calendar-heatmap text { fill: #555; font-size: 8px; }
+  .react-calendar-heatmap text { fill: var(--text-tertiary); font-size: 8px; }
   .react-calendar-heatmap rect:hover { stroke: #fc4c02; stroke-width: 1px; }
 `;
 
@@ -44,12 +44,12 @@ export function StudyHeatmap({ values }: StudyHeatmapProps) {
     fontSize: 12,
     border: 'none',
     cursor: 'pointer',
-    background: active ? '#fc4c02' : '#1a1a1a',
-    color: active ? '#fff' : '#888',
+    background: active ? '#fc4c02' : 'var(--card)',
+    color: active ? '#fff' : 'var(--text-secondary)',
   });
 
   return (
-    <div style={{ background: '#1a1a1a', borderRadius: 12, padding: '16px' }}>
+    <div style={{ background: 'var(--card)', borderRadius: 12, padding: '16px' }}>
       <style>{HEATMAP_STYLE}</style>
 
       {/* View toggle */}
@@ -69,7 +69,7 @@ export function StudyHeatmap({ values }: StudyHeatmapProps) {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#888',
+                color: 'var(--text-secondary)',
                 cursor: 'pointer',
                 fontSize: 16,
                 padding: '0 4px',
@@ -77,7 +77,7 @@ export function StudyHeatmap({ values }: StudyHeatmapProps) {
             >
               &lt;
             </button>
-            <span style={{ color: '#fff', fontSize: 13, minWidth: 90, textAlign: 'center' }}>
+            <span style={{ color: 'var(--text)', fontSize: 13, minWidth: 90, textAlign: 'center' }}>
               {format(selectedMonth, 'MMM yyyy')}
             </span>
             <button
@@ -85,7 +85,7 @@ export function StudyHeatmap({ values }: StudyHeatmapProps) {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#888',
+                color: 'var(--text-secondary)',
                 cursor: 'pointer',
                 fontSize: 16,
                 padding: '0 4px',

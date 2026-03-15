@@ -1,6 +1,7 @@
 import { doc, setDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import type { User } from 'firebase/auth';
-import { db } from './config';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { db, storage } from './config';
 import type { UserProfile, SubjectGoal } from '../types/user';
 
 // Called on every sign-in. setDoc with merge:true is idempotent:
@@ -31,6 +32,24 @@ export async function createOrUpdateUserDoc(user: User): Promise<void> {
   };
 
   await setDoc(userRef, profileData, { merge: true });
+}
+
+// Update editable profile fields (bio, customPhotoURL, etc.)
+export async function updateUserProfile(
+  uid: string,
+  fields: Partial<{ bio: string; customPhotoURL: string }>
+): Promise<void> {
+  await updateDoc(doc(db, 'users', uid), { ...fields, updatedAt: serverTimestamp() });
+}
+
+// Upload a profile photo to Firebase Storage, update Firestore, and return the URL.
+export async function uploadProfilePhoto(uid: string, file: File): Promise<string> {
+  const ext = file.name.split('.').pop() ?? 'jpg';
+  const storageRef = ref(storage, `profile-photos/${uid}/${Date.now()}.${ext}`);
+  await uploadBytes(storageRef, file);
+  const url = await getDownloadURL(storageRef);
+  await updateDoc(doc(db, 'users', uid), { customPhotoURL: url, updatedAt: serverTimestamp() });
+  return url;
 }
 
 // Write partial goal fields to users/{uid}.

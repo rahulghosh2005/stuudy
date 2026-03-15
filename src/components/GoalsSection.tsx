@@ -4,6 +4,78 @@ import { getSubjects } from '../firebase/subjects';
 import type { UserProfile, SubjectGoal } from '../types/user';
 import type { Subject } from '../types/session';
 
+// ── GoalRow ──────────────────────────────────────────────────────────────────
+
+interface GoalRowProps {
+  label: string;
+  sublabel: string;
+  enabled: boolean;
+  minutes: number;
+  maxMinutes: number;
+  isSaving: boolean;
+  onToggle: (v: boolean) => void;
+  onMinutesChange: (v: number) => void;
+  onSave: () => void;
+}
+
+function GoalRow({ label, sublabel, enabled, minutes, maxMinutes, isSaving, onToggle, onMinutesChange, onSave }: GoalRowProps) {
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center',
+      padding: '12px 0',
+      borderBottom: '1px solid var(--border)',
+      gap: 12,
+    }}>
+      <input
+        type="checkbox"
+        checked={enabled}
+        onChange={e => onToggle(e.target.checked)}
+        style={{ width: 16, height: 16, accentColor: '#fc4c02', flexShrink: 0, cursor: 'pointer' }}
+      />
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', lineHeight: 1.2 }}>{label}</div>
+        <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 1, fontWeight: 500 }}>{sublabel}</div>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, opacity: enabled ? 1 : 0.4, transition: 'opacity 0.2s' }}>
+        <input
+          type="number"
+          value={minutes}
+          min={1}
+          max={maxMinutes}
+          disabled={!enabled}
+          onChange={e => onMinutesChange(Number(e.target.value))}
+          style={{
+            width: 72, background: 'var(--bg-secondary)',
+            color: 'var(--text)', border: '1px solid var(--border-alt)',
+            borderRadius: 8, padding: '6px 8px',
+            fontSize: 13, fontWeight: 600, textAlign: 'center',
+            outline: 'none', fontFamily: 'inherit',
+          }}
+        />
+        <span style={{ color: 'var(--text-tertiary)', fontSize: 11, fontWeight: 600 }}>min</span>
+      </div>
+      <button
+        onClick={onSave}
+        disabled={isSaving || !enabled}
+        style={{
+          background: enabled ? '#fc4c02' : 'var(--border)',
+          color: enabled ? '#fff' : 'var(--text-tertiary)',
+          border: 'none', borderRadius: 8,
+          padding: '7px 14px', fontSize: 12, fontWeight: 700,
+          cursor: (isSaving || !enabled) ? 'not-allowed' : 'pointer',
+          opacity: isSaving ? 0.6 : 1,
+          transition: 'background 0.15s',
+          flexShrink: 0,
+        }}
+      >
+        {isSaving ? '…' : 'Save'}
+      </button>
+    </div>
+  );
+}
+
+// ── GoalsSection ─────────────────────────────────────────────────────────────
+
 interface GoalsSectionProps {
   uid: string;
   profile: UserProfile;         // current goal values from Firestore
@@ -85,167 +157,69 @@ export function GoalsSection({ uid, profile, onGoalsUpdated }: GoalsSectionProps
   }
 
   return (
-    <div style={{ background: '#1a1a1a', borderRadius: 12, padding: '20px', marginTop: 24 }}>
-      <h3 style={{ color: '#fff', fontSize: 16, fontWeight: 700, margin: '0 0 16px' }}>Goals</h3>
-
+    <div>
       {/* Daily goal */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-        <input
-          type="checkbox"
-          checked={dailyEnabled}
-          onChange={e => setDailyEnabled(e.target.checked)}
-          style={{ width: 16, height: 16, accentColor: '#fc4c02' }}
-        />
-        <span style={{ color: '#fff', fontSize: 14, flex: 1 }}>Daily goal</span>
-        <input
-          type="number"
-          value={dailyMinutes}
-          min={1}
-          max={1440}
-          disabled={!dailyEnabled}
-          onChange={e => setDailyMinutes(Number(e.target.value))}
-          style={{
-            width: 80,
-            background: '#0a0a0a',
-            color: '#fff',
-            border: '1px solid #333',
-            borderRadius: 6,
-            padding: '4px 8px',
-            fontSize: 14,
-            opacity: dailyEnabled ? 1 : 0.4,
-          }}
-        />
-        <span style={{ color: '#888', fontSize: 12 }}>min</span>
-        <button
-          onClick={handleSaveDaily}
-          disabled={isSavingDaily}
-          style={{
-            background: '#fc4c02',
-            color: '#fff',
-            border: 'none',
-            borderRadius: 6,
-            padding: '4px 12px',
-            fontSize: 12,
-            cursor: isSavingDaily ? 'not-allowed' : 'pointer',
-            opacity: isSavingDaily ? 0.6 : 1,
-          }}
-        >
-          Save
-        </button>
-      </div>
+      <GoalRow
+        label="Daily goal"
+        sublabel="Minutes per day"
+        enabled={dailyEnabled}
+        minutes={dailyMinutes}
+        maxMinutes={1440}
+        isSaving={isSavingDaily}
+        onToggle={setDailyEnabled}
+        onMinutesChange={setDailyMinutes}
+        onSave={handleSaveDaily}
+      />
 
       {/* Weekly goal */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-        <input
-          type="checkbox"
-          checked={weeklyEnabled}
-          onChange={e => setWeeklyEnabled(e.target.checked)}
-          style={{ width: 16, height: 16, accentColor: '#fc4c02' }}
-        />
-        <span style={{ color: '#fff', fontSize: 14, flex: 1 }}>Weekly goal</span>
-        <input
-          type="number"
-          value={weeklyMinutes}
-          min={1}
-          max={10080}
-          disabled={!weeklyEnabled}
-          onChange={e => setWeeklyMinutes(Number(e.target.value))}
-          style={{
-            width: 80,
-            background: '#0a0a0a',
-            color: '#fff',
-            border: '1px solid #333',
-            borderRadius: 6,
-            padding: '4px 8px',
-            fontSize: 14,
-            opacity: weeklyEnabled ? 1 : 0.4,
-          }}
-        />
-        <span style={{ color: '#888', fontSize: 12 }}>min</span>
-        <button
-          onClick={handleSaveWeekly}
-          disabled={isSavingWeekly}
-          style={{
-            background: '#fc4c02',
-            color: '#fff',
-            border: 'none',
-            borderRadius: 6,
-            padding: '4px 12px',
-            fontSize: 12,
-            cursor: isSavingWeekly ? 'not-allowed' : 'pointer',
-            opacity: isSavingWeekly ? 0.6 : 1,
-          }}
-        >
-          Save
-        </button>
-      </div>
+      <GoalRow
+        label="Weekly goal"
+        sublabel="Minutes per week"
+        enabled={weeklyEnabled}
+        minutes={weeklyMinutes}
+        maxMinutes={10080}
+        isSaving={isSavingWeekly}
+        onToggle={setWeeklyEnabled}
+        onMinutesChange={setWeeklyMinutes}
+        onSave={handleSaveWeekly}
+      />
 
       {/* Per-subject goals */}
       {subjects.length > 0 && (
-        <div>
-          <p style={{ color: '#888', fontSize: 13, margin: '0 0 12px' }}>Per-subject goals</p>
+        <div style={{ marginTop: 8 }}>
+          <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.08em', margin: '16px 0 4px' }}>
+            Per Subject
+          </div>
           {subjects.map(subject => {
             const goal = subjectGoals[subject.id];
             const enabled = goal?.enabled ?? false;
             const minutes = goal?.minutes ?? 60;
             return (
-              <div
+              <GoalRow
                 key={subject.id}
-                style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}
-              >
-                <input
-                  type="checkbox"
-                  checked={enabled}
-                  onChange={e => setSubjectGoal(subject.id, 'enabled', e.target.checked)}
-                  style={{ width: 16, height: 16, accentColor: '#fc4c02' }}
-                />
-                <span style={{ color: '#fff', fontSize: 14, flex: 1 }}>{subject.name}</span>
-                <input
-                  type="number"
-                  value={minutes}
-                  min={1}
-                  max={1440}
-                  disabled={!enabled}
-                  onChange={e => setSubjectGoal(subject.id, 'minutes', Number(e.target.value))}
-                  style={{
-                    width: 80,
-                    background: '#0a0a0a',
-                    color: '#fff',
-                    border: '1px solid #333',
-                    borderRadius: 6,
-                    padding: '4px 8px',
-                    fontSize: 14,
-                    opacity: enabled ? 1 : 0.4,
-                  }}
-                />
-                <span style={{ color: '#888', fontSize: 12 }}>min</span>
-              </div>
+                label={subject.name}
+                sublabel="Minutes per day"
+                enabled={enabled}
+                minutes={minutes}
+                maxMinutes={1440}
+                isSaving={false}
+                onToggle={v => setSubjectGoal(subject.id, 'enabled', v)}
+                onMinutesChange={v => setSubjectGoal(subject.id, 'minutes', v)}
+                onSave={handleSaveSubjects}
+              />
             );
           })}
-          <button
-            onClick={handleSaveSubjects}
-            disabled={isSavingSubjects}
-            style={{
-              background: '#fc4c02',
-              color: '#fff',
-              border: 'none',
-              borderRadius: 6,
-              padding: '6px 16px',
-              fontSize: 13,
-              cursor: isSavingSubjects ? 'not-allowed' : 'pointer',
-              opacity: isSavingSubjects ? 0.6 : 1,
-              marginTop: 4,
-            }}
-          >
-            Save subject goals
-          </button>
+          {isSavingSubjects && (
+            <div style={{ fontSize: 12, color: 'var(--text-tertiary)', marginTop: 8, fontWeight: 500 }}>Saving…</div>
+          )}
         </div>
       )}
 
       {/* Error state */}
       {saveError && (
-        <p style={{ color: '#e53e3e', fontSize: 13, margin: '12px 0 0' }}>{saveError}</p>
+        <p style={{ color: 'var(--error)', fontSize: 13, margin: '12px 0 0' }}>{saveError}</p>
       )}
     </div>
   );
 }
+
